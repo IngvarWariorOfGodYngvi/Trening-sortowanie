@@ -7,7 +7,7 @@ public class main {
     public static void main(String[] args) throws InterruptedException {
         //Random counts
         //-----------------------------------------------------------------------------------------------------
-        int counts = 100000;
+        int counts = 10000000;
         SomeSort ob = new SomeSort();
         int[] rCounts = new int[counts];
         for (int i = 0; i < rCounts.length; i++) {
@@ -36,10 +36,10 @@ public class main {
 //        ob.pigeonholeSort(rCounts);
 //        ob.cycleSort(rCounts);
 //        ob.coctailSort(rCounts);
-
+//        ob.bitonicSort(rCounts);
 
         Long stop = System.currentTimeMillis();
-        ob.printArray(rCounts);
+//        ob.printArray(rCounts);
         System.out.println(stop - start + " ms");
 //        System.out.println("Distincts : " + ob.countDistinct(rCounts));
 

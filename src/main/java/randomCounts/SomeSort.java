@@ -550,41 +550,76 @@ class SomeSort {
             }
         }
     }
+
     //      Coctail Sort
 //-----------------------------------------------------------------------------------------------------
-    void coctailSort(int array[]){
-        boolean swapped=true;
+    void coctailSort(int array[]) {
+        boolean swapped = true;
         int start = 0;
         int end = array.length;
 
-        while(swapped){
-            swapped=false;
+        while (swapped) {
+            swapped = false;
 
-            for (int i = start;i<end-1;i++){
-                if (array[i]>array[i+1]){
+            for (int i = start; i < end - 1; i++) {
+                if (array[i] > array[i + 1]) {
                     int temp = array[i];
-                    array[i]= array[i+1];
-                    array[i+1] = temp;
-                    swapped=true;
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
+                    swapped = true;
                 }
             }
-            if (!swapped){
+            if (!swapped) {
                 break;
             }
             swapped = false;
-            end=end-1;
+            end = end - 1;
 
-            for(int i = end-1;i>=start;i--){
-                if(array[i]>array[i+1]){
+            for (int i = end - 1; i >= start; i--) {
+                if (array[i] > array[i + 1]) {
                     int temp = array[i];
-                    array[i] = array[i+1];
-                    array[i+1]= temp;
-                    swapped=true;
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
+                    swapped = true;
                 }
             }
-            start = start+1;
+            start = start + 1;
         }
 
+    }
+
+    //      Bitonic Sort
+//-----------------------------------------------------------------------------------------------------
+    private void compAndSwap(int array[], int i, int j, int dir) {
+        if ((array[i] > array[j] && dir == 1) || (array[i] < array[j] && dir == 0)) {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+    private void bitonicMerge(int array[],int low,int count, int dir){
+        if(count>1){
+            int k = count/2;
+            for(int i = low;i<low+k;i++){
+                compAndSwap(array,i,i+k,dir);
+            }
+            bitonicMerge(array,low,k,dir);
+            bitonicMerge(array,low+k,k,dir);
+        }
+    }
+
+    private void bitonicSorting(int array[],int low, int count, int dir){
+        if(count>1){
+            int k = count/2;
+            bitonicSorting(array,low,k,1);
+            bitonicSorting(array,low+k,k,0);
+            bitonicMerge(array,low,count,dir);
+        }
+    }
+    void bitonicSort(int array[]){
+        int n = array.length;
+        int up = 1;
+        bitonicSorting(array,0,n,up);
     }
 }
 
