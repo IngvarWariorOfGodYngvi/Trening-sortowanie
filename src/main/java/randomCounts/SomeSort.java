@@ -503,5 +503,52 @@ class SomeSort {
             }
         }
     }
+
+    //      Cycle Sort
+//-----------------------------------------------------------------------------------------------------
+    void cycleSort(int array[]) {
+        int n = array.length;
+        int writes = 0;
+        for (int cycleStart = 0; cycleStart <= n - 2; cycleStart++) {
+            int item = array[cycleStart];
+
+            int pos = cycleStart;
+            for (int i = cycleStart + 1; i < n; i++) {
+                if (array[i] < item) {
+                    pos++;
+                }
+            }
+            if (pos == cycleStart) {
+                continue;
+            }
+            while (item == array[pos]) {
+                pos += 1;
+            }
+            if (pos != cycleStart) {
+                int temp = item;
+                item = array[pos];
+                array[pos] = temp;
+                writes++;
+            }
+            while (pos != cycleStart) {
+                pos = cycleStart;
+
+                for (int i = cycleStart + 1; i < n; i++) {
+                    if (array[i] < item) {
+                        pos += 1;
+                    }
+                }
+                while (item == array[pos]) {
+                    pos += 1;
+                }
+                if (item != array[pos]) {
+                    int temp = item;
+                    item = array[pos];
+                    array[pos] = temp;
+                    writes++;
+                }
+            }
+        }
+    }
 }
 

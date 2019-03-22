@@ -7,11 +7,11 @@ public class main {
     public static void main(String[] args) throws InterruptedException {
         //Random counts
         //-----------------------------------------------------------------------------------------------------
-
+        int counts = 100000;
         SomeSort ob = new SomeSort();
-        int[] rCounts = new int[10000000];
+        int[] rCounts = new int[counts];
         for (int i = 0; i < rCounts.length; i++) {
-            int temp2 = temp.nextInt(10000000);
+            int temp2 = temp.nextInt(counts);
             rCounts[i] = temp2;
         }
 //        ob.printArray(rCounts);
@@ -34,12 +34,12 @@ public class main {
 //        ob.timSort(rCounts);
 //        ob.combSort(rCounts);
 //        ob.pigeonholeSort(rCounts);
-
+//        ob.cycleSort(rCounts);
 
 
 
         Long stop = System.currentTimeMillis();
-//        ob.printArray(rCounts);
+        ob.printArray(rCounts);
         System.out.println(stop - start + " ms");
 //        System.out.println("Distincts : " + ob.countDistinct(rCounts));
 
