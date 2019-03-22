@@ -488,64 +488,20 @@ class SomeSort {
             }
         }
 
-        range = max-min +1;
+        range = max - min + 1;
 
         int pHole[] = new int[range];
-        Arrays.fill(pHole,0);
+        Arrays.fill(pHole, 0);
 
-        for(i=0;i<n;i++){
-            pHole[array[i]-min]++;
+        for (i = 0; i < n; i++) {
+            pHole[array[i] - min]++;
         }
         index = 0;
-        for(j=0;j<range;j++){
-            while(pHole[j]-->0){
-                array[index++]=j+min;
+        for (j = 0; j < range; j++) {
+            while (pHole[j]-- > 0) {
+                array[index++] = j + min;
             }
         }
-
     }
-
-    //    building christmas tree
-//-----------------------------------------------------------------------------------------------------
-    void christmasTree(int layers) {
-        char slash = '/';
-        char backSlash = '\\';
-        int spaceTime = layers;
-        createStar(spaceTime);
-        makeSpace(spaceTime);
-        System.out.println("/|\\");
-        for (int i = 0; i <= layers - 1; i++) {
-            spaceTime--;
-            makeSpace(spaceTime);
-            for (int j = 0; j <= i; j++) {
-                System.out.print(slash);
-            }
-            System.out.print("|||");
-            for (int k = 0; k <= i; k++) {
-                System.out.print(backSlash);
-            }
-            System.out.println();
-        }
-    }
-
-    private void makeSpace(int times) {
-        for (int i = 0; i <= times - 1; i++)
-            System.out.print(" ");
-    }
-
-    private void createStar(int space) {
-        makeSpace(space + 1);
-        System.out.println("*");
-        makeSpace(space);
-        System.out.println("/|\\");
-        makeSpace(space - 2);
-        System.out.println("<* o *>");
-        makeSpace(space);
-        System.out.println("\\|/");
-        makeSpace(space + 1);
-        System.out.println("|");
-
-    }
-
 }
 
